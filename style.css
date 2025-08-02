@@ -1,0 +1,102 @@
+/* Background with gradient animation */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1e1e1e);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass effect box */
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Heading */
+h1 {
+  font-size: 2em;
+  color: #00f7ff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00f7ff;
+}
+
+/* Input box */
+input {
+  width: 80%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  background: #111;
+  color: #0ff;
+  outline: none;
+  border: 2px solid #00f7ff;
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background: #00f7ff;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px #00f7ff, 0 0 30px #00f7ff inset;
+}
+
+button:hover {
+  background: #0ff;
+  transform: scale(1.05);
+}
+
+/* Code display box */
+pre {
+  background-color: #000000b0;
+  color: #39ff14;
+  padding: 20px;
+  border-radius: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border: 1px solid #00f7ff;
+  margin-top: 20px;
+}
+
+/* Scrollbar style */
+pre::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+pre::-webkit-scrollbar-thumb {
+  background: #00f7ff;
+  border-radius: 4px;
+}
+pre::-webkit-scrollbar-track {
+  background: #111;
+}
