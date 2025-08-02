@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML Viewer 🔍</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 HTML Source Viewer</h1>
+    <form id="urlForm">
+      <input type="text" id="urlInput" placeholder="Enter any URL (https://...)">
+      <button type="submit">View Source</button>
+    </form>
+    <pre id="outputArea">Paste a URL and fetch HTML source...</pre>
+    <button id="copyBtn">📋 Copy Code</button>
+    <button id="downloadBtn">⬇️ Download as .html</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('urlForm');
+    const output = document.getElementById('outputArea');
+    const copyBtn = document.getElementById('copyBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = document.getElementById('urlInput').value;
+      const res = await fetch('/api/getCode', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      });
+      const data = await res.text();
+      output.textContent = data;
+    });
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(output.textContent);
+      copyBtn.textContent = "✅ Copied!";
+      setTimeout(() => copyBtn.textContent = "📋 Copy Code", 2000);
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      const blob = new Blob([output.textContent], { type: 'text/html' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'source_code.html';
+      a.click();
+    });
+  </script>
+</body>
+</html>
